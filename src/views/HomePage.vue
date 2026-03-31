@@ -37,10 +37,7 @@ import router from '@/router';
  
 }
  
- 
-.botao {
- 
-   
- 
-}
+  ion-content::part(background){
+    background: #c95e93;
+  }
 </style>
