@@ -43,6 +43,7 @@
             :key="tarefa.id"
             :tarefa="tarefa"
             @remover="removerTarefa"
+            @concluir="concluirTarefa"
           ></CardTarefa>
         </ion-card-content>
       </ion-card>
@@ -51,7 +52,7 @@
 </template>
 <script setup lang="ts">
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonInput, IonButton, IonButtons, IonBackButton, IonIcon } from '@ionic/vue'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { checkmarkDoneOutline } from "ionicons/icons"
 import { useTarefas } from '../composables/useTarefas'
 import CardTarefa from '../components/CardTarefa.vue'
@@ -63,7 +64,8 @@ const {
   // filtradas,
   adicionar,
   remover,
-  // concluir
+  totalPendentes,
+  concluir
 
 } = useTarefas()
 
@@ -75,6 +77,16 @@ const removerTarefa = (index: number) => {
   remover(index)
 }
 
+const concluirTarefa = (id: number) => {
+  concluir(id)
+}
+
+watch(totalPendentes, (valor) => {
+ if (valor === 0 && tarefas.value.length > 0) {
+ // Exibir IonAlert, IonToast ou alert() simples
+ alert('🎉 Parabéns! Todas as tarefas foram concluídas!')
+ }
+})
 
 </script>
 

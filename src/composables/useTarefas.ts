@@ -1,4 +1,4 @@
-import { ref, computed, } from 'vue'
+import { ref, computed,  } from 'vue'
 interface Tarefa {
     id: number
     texto: string
@@ -38,4 +38,8 @@ export function useTarefas() {
         tarefas, busca, filtroAtivo, filtradas, totalPendentes,
         adicionar, remover, concluir
     }
+
+
 }
+
+
